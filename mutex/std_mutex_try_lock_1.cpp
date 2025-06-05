@@ -1,6 +1,6 @@
 /*
 * project   : https://github.com/Robin005cr/multi_threading
-* file name : try_lock.cpp
+* file name : std_mutex_try_lock_1.cpp
 * author    : Robin CR
 * mail id   : robinchovallurraju@gmail.com
 * LinkedIn  : https://www.linkedin.com/in/robin-cr/
