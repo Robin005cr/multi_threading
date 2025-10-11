@@ -1,6 +1,6 @@
 /*
  * project   : https://github.com/Robin005cr/multi_threading
- * file name : 002_builtinDataTypePtr.cpp
+ * file name : 004_initializeVar.cpp
  * author    : Robin CR
  * mail id   : robinchovallurraju@gmail.com
  * LinkedIn  : https://www.linkedin.com/in/robin-cr/
@@ -11,16 +11,14 @@
  * I value constructive feedback and aim to continuously improve the quality of the work.
  *
  */
-#include <atomic>
 #include <iostream>
+#include <atomic>
 using namespace std;
-
 int main()
 {
+    atomic<int> DemVar = {9};
+    atomic<bool> status{true};
+    atomic<float> temperature(89.9);
 
-    int value1 = 10;
-    int value2 = 20;
-
-    std::atomic<int *> atomicPtr{&value1};
-    cout << (*atomicPtr);
+    return 0;
 }
