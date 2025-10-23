@@ -1,6 +1,6 @@
 /*
  * project   : https://github.com/Robin005cr/multi_threading
- * file name : 007_trivially_copyable.cpp
+ * file name : 008_memberVariable.cpp
  * author    : Robin CR
  * mail id   : robinchovallurraju@gmail.com
  * LinkedIn  : https://www.linkedin.com/in/robin-cr/
@@ -12,27 +12,27 @@
  *
  */
 #include <iostream>
-#include <type_traits>
+#include <atomic>
 using namespace std;
 
-struct A {
-    int x;
-    float y;
-};  // ✅ trivially copyable
-
-struct B {
-    int x;
-    B() {}  // ❌ user-defined constructor
+class Battery
+{
+    public:
+        atomic<float> percentage;
+        atomic<int> weight; 
+        void showPercent();
 };
+void Battery::showPercent()
+{
+    percentage = 89;
+    cout<<percentage<<endl;
+}
+int main()
+{
+    Battery duracell;
+    duracell.weight = 56;
+    cout<<duracell.weight<<endl;
+    duracell.showPercent();
 
-struct C {
-    int* p;
-    ~C() {} // ❌ non-trivial destructor
-};
-
-int main() {
-    cout << boolalpha; // print true/false instead of 1/0
-    cout << "A: " << is_trivially_copyable<A>::value << endl;
-    cout << "B: " << is_trivially_copyable<B>::value << endl;
-    cout << "C: " << is_trivially_copyable<C>::value << endl;
+    return 0;
 }
