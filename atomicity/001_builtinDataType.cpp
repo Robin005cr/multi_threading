@@ -18,7 +18,7 @@ using namespace std;
 // Atomics is possible with all basic built in datatypes (bool, int, float) except std::string.
 int main()
 {
-    // atomic<int> a = 48; // Direct assignment will lead to error
+    // atomic<int> a = 48; // Direct assignment will lead to error before C++17
     atomic<int> a {30};
     atomic_int a_ (56);
     
