@@ -1,0 +1,42 @@
+/*
+* project   : https://github.com/Robin005cr/multi_threading
+* file name : thread_local.cpp
+* author    : Robin CR
+* mail id   : robinchovallurraju@gmail.com
+* LinkedIn  : https://www.linkedin.com/in/robin-cr/
+* portfolio : https://robin005cr.github.io/
+*
+* Note : If any mistakes, errors, or inconsistencies are found in the code, please feel free to mail me.
+* Suggestions for improvements or better methods are always welcome and appreciated.
+* I value constructive feedback and aim to continuously improve the quality of the work.
+*
+*/
+#include<iostream>
+#include<thread>
+using namespace std;
+static thread_local int z = 10;
+
+void fun1()
+{
+	z++;
+	this_thread::sleep_for(chrono::seconds(2));
+	cout << "fun1, z:" << z << endl;
+}
+void fun2()
+{
+	z--;
+	this_thread::sleep_for(chrono::seconds(2));
+	cout << "fun2, z:" << z << endl;
+}
+void main()
+{
+	thread th1(&fun1);
+	thread th2(&fun1);
+	thread th3(&fun2);
+	thread th4(&fun2);
+
+	th1.join();
+	th2.join();
+	th3.join();
+	th4.join();
+}
